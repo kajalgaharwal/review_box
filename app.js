@@ -1,4 +1,4 @@
-const reviews = [
+let reviews = [
   {
     id: 1,
     img: 'https://picsum.photos/100/100?code',
@@ -38,8 +38,9 @@ const reviews = [
 let img = document.getElementById('img');
 let author = document.getElementById('author');
 let info = document.getElementById('info');
-let previous = document.getElementById('left');
+let previous = document.getElementById('previous');
 let next = document.getElementById('next');
+const reviewsLength = reviews.length - 1;
 
 let currentItem = 0;
 window.addEventListener('DOMContentLoaded', () => {
@@ -58,14 +59,14 @@ function displayData(personId) {
 previous.addEventListener('click', function() {
   currentItem--;
   if (currentItem < 0) {
-    currentItem = reviews.length - 1;
+    currentItem = reviewsLength;
   }
   displayData(currentItem);
 });
 
 next.addEventListener('click', function() {
   currentItem++;
-  if (currentItem > reviews.length - 1) {
+  if (currentItem > reviewsLength) {
     currentItem = 0;
   }
   displayData(currentItem);
